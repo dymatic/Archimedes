@@ -1,0 +1,8 @@
+===Archimedes
+Archimedes is a rewrite of LibHaskell. LibHaskell is wonderful, but it does the following weird things:
+
+ -Redefines Prelude functions under a different name
+ -Has poorly defined functions in LibLists
+ -Has no separation in LibLists, making it > 300 lines
+
+Archimedes is designed to not only redefine LibHaskell, but to re-engineer it from the ground up. Archimedes is portable, non-bloated, and sanely separated.
