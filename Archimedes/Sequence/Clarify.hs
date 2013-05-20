@@ -2,7 +2,6 @@ module Archimedes.Sequence.Clarify(
 	  positions
          ,pos
          ,contains
-         ,count
          ,mostly
          ,allEq) where
 
@@ -27,9 +26,6 @@ contains [] _ = False
 contains x a
     | (take (length a) x) == a = True
     | otherwise = contains (tail x) a
-
-count :: (Eq a) => [a] -> a -> Int
-count xs b = length [x | x <- xs, x == b]
 
 mostly :: (Eq a) => [a] -> a -> Bool
 mostly xs b = let times = (count xs b) in times > (length xs - times)
