@@ -5,4 +5,5 @@ Archimedes is a rewrite of LibHaskell. LibHaskell is wonderful, but it does the 
  -Has poorly defined functions in LibLists
  -Has no separation in LibLists, making it > 300 lines
 
-Archimedes is designed to not only redefine LibHaskell, but to re-engineer it from the ground up. Archimedes is portable, non-bloated, and sanely separated.
+Archimedes is designed to not only redefine LibHaskell, but to re-engineer it from the ground up. Archimedes is portable, non-bloated, and sanely separated. Eventually it will take in all of LibHaskell's functions so that the rest of my projects can start using it, however that is for a day far in the future.
+-

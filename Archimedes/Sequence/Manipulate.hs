@@ -1,14 +1,15 @@
 module Archimedes.Sequence.Manipulate(
-     sub
-   , to
-   , after
-   , positions
-   , pos
-   , after
-   , before
-   , between
-   , rm
-   , remove
+       sub
+     , to
+     , after
+     , positions
+     , pos
+     , after
+     , before
+     , between
+     , rm
+     , remove
+     , replace
 ) where
 
 import Archimedes.Common
@@ -44,3 +45,7 @@ remove x a
     | (take la x) == a = remove (sub x $ dec la) a
     | otherwise = (head x) : remove (tail x) a
   where la = (length a)
+
+replace :: (Eq a) => [a] -> (a,a) -> [a]
+replace x (a,b) = map (\c -> if c == a then b else c) x
+
