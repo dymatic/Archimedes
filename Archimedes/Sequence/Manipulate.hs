@@ -10,10 +10,20 @@ module Archimedes.Sequence.Manipulate(
      , rm
      , remove
      , replace
-) where
+     , pos
+     , positions) where
 
 import Archimedes.Common
 import Archimedes.Sequence.Clarify
+import Archimedes.Sequence.Functional
+--Local Functions
+fibseq :: [Int] -> [Int]
+fibseq x = tail $ reverse $ helper x (length x)
+  where helper a n = if (n == 0) then [0] else descend a n : helper a (dec n)
+
+descend :: [Int] -> Int -> Int
+descend x b = sum $ (to x b)
+
 -- Exported Functions
 sub :: [a] -> Int -> [a]
 sub [] _ = []
@@ -49,3 +59,11 @@ remove x a
 replace :: (Eq a) => [a] -> (a,a) -> [a]
 replace x (a,b) = map (\c -> if c == a then b else c) x
 
+pos :: (Eq a) => [a] -> a -> Int
+pos a b = length $ filterBreak (/= b) a
+
+positions :: (Eq a) => [a] -> a -> [Int]
+positions a b
+  | (b `elem` a) = fibseq $ x : positions (sub a $ inc x) b
+  | otherwise = []
+  where x = pos a b
