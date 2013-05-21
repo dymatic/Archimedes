@@ -70,3 +70,5 @@ positions a b
 
 removeLeading :: (Eq a) => [a] -> a -> [a]
 removeLeading x b = removeBreak (== b) x
+
+
