@@ -11,7 +11,8 @@ module Archimedes.Sequence.Manipulate(
      , remove
      , replace
      , pos
-     , positions) where
+     , positions
+     , removeLeading) where
 
 import Archimedes.Common
 import Archimedes.Sequence.Clarify
@@ -63,12 +64,8 @@ pos :: (Eq a) => [a] -> a -> Int
 pos a b = length $ filterBreak (/= b) a
 
 positions :: (Eq a) => [a] -> a -> [Int]
-positions a b
-  | (b `elem` a) = fibseq $ x : positions (sub a $ inc x) b
-  | otherwise = []
-  where x = pos a b
+positions a b = let lengths = (zip a [0..(dec (length a))]) in
+  rm (map (\(c,d) -> if c == b then d else (-1)) lengths) (-1)
 
 removeLeading :: (Eq a) => [a] -> a -> [a]
 removeLeading x b = removeBreak (== b) x
-
-

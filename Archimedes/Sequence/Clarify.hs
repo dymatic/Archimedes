@@ -1,7 +1,8 @@
 module Archimedes.Sequence.Clarify(
            contains
          , mostly
-         , allEq) where
+         , allEq
+         , find) where
 
 import Archimedes.Sequence.Functional
 import Archimedes.Common
@@ -18,3 +19,10 @@ mostly xs b = let times = (count xs b) in times > (length xs - times)
 
 allEq :: (Eq a) => [a] -> a -> Bool
 allEq xs b = (length xs) == (length $ filterBreak (==b) xs)
+
+find :: (Eq a) => [(a,b)] -> a -> b
+find a@((d,c):xs) b
+  | (b `notElem` (map fst a)) = c
+  | d == b = c
+  | otherwise = find xs b
+

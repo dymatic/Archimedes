@@ -21,3 +21,6 @@ count x c = sum $ [1 | f <- x, f == c]
 
 unit :: [(a -> Bool)] -> a -> Int -> Bool
 unit f b c = count [(x b) | x <- f] True >= c 
+
+first :: (a -> Bool) -> [a] -> a
+first x (b:bs) = if x b then b else first x bs 
