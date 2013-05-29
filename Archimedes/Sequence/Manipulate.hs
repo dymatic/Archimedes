@@ -1,8 +1,6 @@
 module Archimedes.Sequence.Manipulate(
        sub
      , to
-     , after
-     , positions
      , pos
      , after
      , before
@@ -12,7 +10,10 @@ module Archimedes.Sequence.Manipulate(
      , replace
      , pos
      , positions
-     , removeLeading) where
+     , removeLeading
+     , afterList
+     , splitOn
+     , intersperse) where
 
 import Archimedes.Common
 import Archimedes.Sequence.Clarify
@@ -69,3 +70,18 @@ positions a b = let lengths = (zip a [0..(dec (length a))]) in
 
 removeLeading :: (Eq a) => [a] -> a -> [a]
 removeLeading x b = removeBreak (== b) x
+
+afterList :: (Eq a) => [a] -> [a] -> [a]
+afterList [] _ = []
+afterList x b
+  | (take (length b) x) == b = sub x (dec (length b))
+  | otherwise = afterList (tail x) b
+
+splitOn :: (Eq a) => [a] -> a -> [[a]]
+splitOn x y
+  | y `elem` x = (before x y) : (splitOn (after x y) y)
+  | otherwise = [x]
+
+intersperse :: [a] -> a -> [a]
+intersperse [] _ = []
+intersperse (x:xs) b = x : b : intersperse xs b

@@ -2,7 +2,8 @@ module Archimedes.Sequence.Functional(
 	  filterBreak
         , count
         , unit
-        , removeBreak) where
+        , removeBreak
+        , first) where
 
 filterBreak :: (a -> Bool) -> [a] -> [a]
 filterBreak _ [] = []
@@ -23,4 +24,4 @@ unit :: [(a -> Bool)] -> a -> Int -> Bool
 unit f b c = count [(x b) | x <- f] True >= c 
 
 first :: (a -> Bool) -> [a] -> a
-first x (b:bs) = if x b then b else first x bs 
+first x (b:bs) = if x b then b else first x bs
