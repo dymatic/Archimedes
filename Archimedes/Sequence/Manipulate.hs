@@ -7,7 +7,6 @@ module Archimedes.Sequence.Manipulate(
      , between
      , rm
      , remove
-     , replace
      , pos
      , positions
      , removeLeading
@@ -57,9 +56,6 @@ remove x a
     | (take la x) == a = remove (sub x $ dec la) a
     | otherwise = (head x) : remove (tail x) a
   where la = (length a)
-
-replace :: (Eq a) => [a] -> (a,a) -> [a]
-replace x (a,b) = map (\c -> if c == a then b else c) x
 
 pos :: (Eq a) => [a] -> a -> Int
 pos a b = length $ filterBreak (/= b) a
