@@ -1,5 +1,6 @@
 module Archimedes.Tasking.Statistics(
-    similarComposure
+    refPos
+  , similarComposure
   , isSimilarWord
   , mostSimilarWord) where
 
@@ -8,7 +9,7 @@ import Archimedes.Sequence.Manipulate
 
 import Archimedes.Tasking.Algorithm
 
--- LOCAL FUNCTIONS
+
 refPos :: (Eq a) => [a] -> [b] -> a -> b
 refPos a b c = b !! (pos a c)
 
