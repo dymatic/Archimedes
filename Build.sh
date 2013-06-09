@@ -17,5 +17,8 @@ cp -R ./Archimedes ~/Code/Haskell/boy/Archimedes
 rm -rf ~/Code/Haskell/parrotBot/Archimedes
 cp -R ./Archimedes ~/Code/Haskell/parrotBot/Archimedes
 
+rm -rf ~/Code/Haskell/Change/Archimedes
+cp -R ./Archimedes ~/Code/Haskell/Change/
+
 git add -u :/
 git add *

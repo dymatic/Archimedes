@@ -6,7 +6,9 @@
 -- input : doesmatch abc @@@
 
 module Archimedes.Tasking.Helix(
-  toStrand) where
+    toStrand
+  , getControl
+  , strands) where
 
 import Archimedes.Sequence.Remove
 
