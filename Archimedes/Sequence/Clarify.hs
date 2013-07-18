@@ -8,7 +8,6 @@ import Archimedes.Sequence.Functional
 import Archimedes.Common
 
 import Data.List (isInfixOf)
-import Data.Map (fromList, (!))
 -- Local Functions
 
 contains :: Eq a => [a] -> [a] -> Bool
