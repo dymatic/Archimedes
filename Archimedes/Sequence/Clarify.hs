@@ -6,23 +6,24 @@ module Archimedes.Sequence.Clarify(
 
 import Archimedes.Sequence.Functional
 import Archimedes.Common
--- Local Functions
-  
-contains :: (Eq a)=> [a] -> [a] -> Bool
-contains [] _ = False
-contains x a
-    | (take (length a) x) == a = True
-    | otherwise = contains (tail x) a
 
-mostly :: (Eq a) => [a] -> a -> Bool
+import Data.List (isInfixOf)
+import Data.Map (fromList, (!))
+-- Local Functions
+
+contains :: Eq a => [a] -> [a] -> Bool
+contains = isInfixOf
+
+mostly :: Eq a => [a] -> a -> Bool
 mostly xs b = let times = (count xs b) in times > (length xs - times)
 
-allEq :: (Eq a) => [a] -> a -> Bool
-allEq xs b = (length xs) == (length $ filterBreak (==b) xs)
+allEq :: Eq a => [a] -> a -> Bool
+allEq [] _ = True
+allEq (x:xs) b = if x == b then allEq xs b else False
 
-find :: (Eq a) => [(a,b)] -> a -> b
-find a@((d,c):xs) b
-  | (b `notElem` (map fst a)) = c
-  | d == b = c
-  | otherwise = find xs b
-
+find :: Eq a => [(a,b)] -> a -> b
+find xs b = if b `notElem` (map fst xs)
+                      then snd $ head xs
+                      else find' xs
+  where
+    find' ((d, c):ys) = if d == b then c else find' ys
