@@ -15,14 +15,14 @@ contains :: Eq a => [a] -> [a] -> Bool
 contains = isInfixOf
 
 mostly :: Eq a => [a] -> a -> Bool
-mostly xs b = let times = (count xs b) in times > (length xs - times)
+mostly xs b = let times = count xs b in times > (length xs - times)
 
 allEq :: Eq a => [a] -> a -> Bool
 allEq [] _ = True
-allEq (x:xs) b = if x == b then allEq xs b else False
+allEq (x:xs) b = (x == b) && allEq xs b
 
 find :: Eq a => [(a,b)] -> a -> b
-find xs b = if b `notElem` (map fst xs)
+find xs b = if b `notElem` map fst xs
                       then snd $ head xs
                       else find' xs
   where
