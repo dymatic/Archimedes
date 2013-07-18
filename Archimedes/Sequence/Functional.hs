@@ -6,22 +6,17 @@ module Archimedes.Sequence.Functional(
         , first) where
 
 filterBreak :: (a -> Bool) -> [a] -> [a]
-filterBreak _ [] = []
-filterBreak f (x:xs)
-	| f x = x : filterBreak f xs
-	| otherwise = []
+filterBreak = takeWhile
 
 removeBreak :: (a -> Bool) -> [a] -> [a]
-removeBreak _ [] = []
-removeBreak f (x:xs)
-  | f x = removeBreak f xs
-  | otherwise = (x:xs)
+removeBreak = dropWhile
 
-count :: (Eq a) => [a] -> a -> Int
-count x c = sum $ [1 | f <- x, f == c]
+-- There's identicaly named function in ‘Util’
+count :: Eq a => [a] -> a -> Int
+count xs c = length $ filter (== c) xs
 
-unit :: [(a -> Bool)] -> a -> Int -> Bool
-unit f b c = count [(x b) | x <- f] True >= c 
+unit :: [a -> Bool] -> a -> Int -> Bool
+unit fs b c = count (map ($ b) fs) True >= c
 
 first :: (a -> Bool) -> [a] -> a
-first x (b:bs) = if x b then b else first x bs
+first p (b:bs) = if p b then b else first p bs

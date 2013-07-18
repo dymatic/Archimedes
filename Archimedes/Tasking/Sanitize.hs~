@@ -1,5 +1,0 @@
-module Archimedes.Tasking.Sanitize(
-  sanitize) where
-
-sanitize [a] -> [(a -> Bool)] -> [a]
-sanitize a b = [x | x <- a, y <- b, (y x)]
