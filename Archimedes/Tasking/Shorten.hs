@@ -12,15 +12,13 @@ mass :: String -> String
 mass [] = []
 mass (x:"") = x:""
 mass a@(x:y:xs)
-	| x == y = ("(" ++ (show rl) ++ [x] ++ ")") ++ mass (removeBreak (== x) a)
+	| x == y = concat ["(", rl, [x], ")", mass $ removeBreak (== x) a]
         | otherwise = x : mass (y:xs)
-  where rl = length $ (filterBreak (== x) a)
+  where rl = show $ length $ filterBreak (== x) a
 
 unmass :: String -> String
 unmass [] = []
 unmass (x:"") = x:""
-unmass a@(x:y:ys)
-  | x == '(' = take nOf (repeat (last (before a ')'))) ++ unmass (after a ')')
-  | otherwise = x : unmass (y:ys)
-    where nOf =  (read $ tail (init ((before a ')')))) :: Int
-	
+unmass a@('(':y:ys) = replicate nOf (last (before a ')')) ++ unmass (after a ')')
+  where nOf = read $ tail $ init $ before a ')' -- read is not cool
+unmass (x:ys) = x : unmass ys
