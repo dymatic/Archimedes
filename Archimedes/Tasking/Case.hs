@@ -7,36 +7,23 @@ module Archimedes.Tasking.Case(
   , toLower) where
 
 import Archimedes.Sequence.Functional
+import qualified Data.Char as DC
 
 isCap :: Char -> Bool
-isCap c = c `elem` ['A'..'Z']
+isCap = DC.isUpper
 
 isLower :: Char -> Bool
-isLower c = not $ isCap c
+isLower = DC.isLower
 
 capitalize :: String -> String
-capitalize (x:xs) = cap x : xs
+capitalize = map DC.toUpper
 
 lowerrize :: String -> String
-lowerrize (x:xs) = low x : xs
+lowerrize = map DC.toLower
 
+-- Why is this repeated yet again?
 toCap :: String -> String
-toCap x = (map cap x)
+toCap = capitalize
 
 toLower :: String -> String
-toLower x = (map low x)
-
---Local Functions
-refPos :: (Eq a) => [a] -> [b] -> a -> b
-refPos l1 l2 c = l2 !! (pos l1 c)
-
-pos :: (Eq a) => [a] -> a -> Int
-pos x b = length $ filterBreak (/=b) x
-
-cap :: Char -> Char
-cap c = if (isCap c) then c else refPos (['a'..'z'] ++ others ) (['A'..'Z']++others) c
-  where others = "`~1!2@3#4$5%6^7&8*9(0)-_=+[{]}\\|:\"'<,>.?/"
-
-low :: Char -> Char
-low c = if (isLower c) then c else refPos (['A'..'Z'] ++ others ) (['a'..'z']++others) c
-  where others = "`~1!2@3#4$5%6^7&8*9(0)-_=+[{]}\\|:\"'<,>.?/" 
+toLower = lowerrize

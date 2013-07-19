@@ -14,12 +14,10 @@ inc x = x + 1
 sqr x = x * x
 
 flatten :: [[a]] -> [a]
-flatten [] = []
-flatten (x:xs) = x ++ flatten xs
+flatten = concat
 
-look :: (Eq a) => [(a,b)] -> a -> b
+look :: Eq a => [(a,b)] -> a -> b
 look [] _ = error "Not contained within tupple"
-look ((a,b):xs) c
+look ((a, b):xs) c
   | a == c = b
   | otherwise = look xs c
-
