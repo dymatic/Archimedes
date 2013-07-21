@@ -1,0 +1,158 @@
+GHCi, version 7.6.3: http://www.haskell.org/ghc/  :? for help
+Loading package ghc-prim ... linking ... done.
+Loading package integer-gmp ... linking ... done.
+Loading package base ... linking ... done.
+Prelude> :cd /home/nate/Code/Haskell/Libraries/ARCHIMEDES/
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+
+Archimedes/Sequence/Frequency.hs:1:44: Not in scope: `freqList'
+
+Archimedes/Sequence/Frequency.hs:1:53: Not in scope: `mostFrequent'
+Failed, modules loaded: none.
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+
+Archimedes/Sequence/Frequency.hs:1:44: Not in scope: `freqList'
+
+Archimedes/Sequence/Frequency.hs:1:53: Not in scope: `mostFrequent'
+Failed, modules loaded: none.
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+
+Archimedes/Sequence/Frequency.hs:8:28:
+    Couldn't match expected type `(a, Int)' with actual type `Int'
+    In the expression: x
+    In the first argument of `(++)', namely `[x]'
+    In the second argument of `(++)', namely `[x] ++ greater'
+Failed, modules loaded: none.
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+
+Archimedes/Sequence/Frequency.hs:1:44: Not in scope: `freqList'
+
+Archimedes/Sequence/Frequency.hs:1:53: Not in scope: `mostFrequent'
+Failed, modules loaded: none.
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+
+Archimedes/Sequence/Frequency.hs:13:29:
+    No instance for (Eq a) arising from a use of `count'
+    Possible fix:
+      add (Eq a) to the context of
+        the type signature for freqList :: [a] -> [(a, Int)]
+    In the expression: (count x c)
+    In the expression: (c, (count x c))
+    In the first argument of `map', namely `(\ c -> (c, (count x c)))'
+
+Archimedes/Sequence/Frequency.hs:16:18:
+    Couldn't match expected type `[(a, Int)]'
+                with actual type `(a, Int)'
+    In the expression: head . qs $ freqList x
+    In an equation for `mostFrequent':
+        mostFrequent x = head . qs $ freqList x
+Failed, modules loaded: none.
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+
+Archimedes/Sequence/Frequency.hs:16:18:
+    Couldn't match expected type `[(a, Int)]'
+                with actual type `(a, Int)'
+    In the expression: head . qs $ freqList x
+    In an equation for `mostFrequent':
+        mostFrequent x = head . qs $ freqList x
+Failed, modules loaded: none.
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+Ok, modules loaded: Archimedes.Sequence.Frequency.
+*Archimedes.Sequence.Frequency> mostFrequent [1,2,3,3,4,5,6]
+6
+*Archimedes.Sequence.Frequency> count "111234" 1
+
+<interactive>:11:16:
+    No instance for (Num Char) arising from the literal `1'
+    Possible fix: add an instance declaration for (Num Char)
+    In the second argument of `count', namely `1'
+    In the expression: count "111234" 1
+    In an equation for `it': it = count "111234" 1
+*Archimedes.Sequence.Frequency> count "111234" '1'
+3
+*Archimedes.Sequence.Frequency> freqList [1,2,3,3,4,5,6]
+[(1,1),(2,1),(3,2),(3,2),(4,1),(5,1),(6,1)]
+*Archimedes.Sequence.Frequency> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+Ok, modules loaded: Archimedes.Sequence.Frequency.
+*Archimedes.Sequence.Frequency> mostFrequent [1,2,3,3,4,5,6]
+*** Exception: Archimedes/Sequence/Frequency.hs:16:1-26: Non-exhaustive patterns in function rev
+
+*Archimedes.Sequence.Frequency> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+Ok, modules loaded: Archimedes.Sequence.Frequency.
+*Archimedes.Sequence.Frequency> mostFrequent [1,2,3,3,4,5,6]
+1
+*Archimedes.Sequence.Frequency> qs [(1,1),(1,3),(1,5),(1,2)]
+[(1,1),(1,2),(1,3),(1,5)]
+*Archimedes.Sequence.Frequency> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+Ok, modules loaded: Archimedes.Sequence.Frequency.
+*Archimedes.Sequence.Frequency> qs [(1,1),(1,3),(1,5),(1,2)]
+[(1,1),(1,2),(1,3),(1,5)]
+*Archimedes.Sequence.Frequency> mostFrequent [1,2,3,3,4,5,6]
+1
+*Archimedes.Sequence.Frequency> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+
+Archimedes/Sequence/Frequency.hs:20:18:
+    Couldn't match expected type `[(a, Int)]'
+                with actual type `a0 -> [a1]'
+    In the expression: rev . qs freqList x
+    In an equation for `mostFrequent':
+        mostFrequent x = rev . qs freqList x
+
+Archimedes/Sequence/Frequency.hs:20:24:
+    Couldn't match expected type `[a] -> a0 -> [a1]'
+                with actual type `[(a2, Int)]'
+    The function `qs' is applied to two arguments,
+    but its type `[(a2, Int)] -> [(a2, Int)]' has only one
+    In the second argument of `(.)', namely `qs freqList x'
+    In the expression: rev . qs freqList x
+
+Archimedes/Sequence/Frequency.hs:20:27:
+    Couldn't match expected type `[(a2, Int)]'
+                with actual type `[a3] -> [(a3, Int)]'
+    In the first argument of `qs', namely `freqList'
+    In the second argument of `(.)', namely `qs freqList x'
+    In the expression: rev . qs freqList x
+Failed, modules loaded: none.
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+Ok, modules loaded: Archimedes.Sequence.Frequency.
+*Archimedes.Sequence.Frequency> mostFrequent [1,2,3,3,4,5,6]
+[(3,2),(3,2),(1,1),(2,1),(4,1),(5,1),(6,1)]
+*Archimedes.Sequence.Frequency> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+Ok, modules loaded: Archimedes.Sequence.Frequency.
+*Archimedes.Sequence.Frequency> mostFrequent [1,2,3,3,4,5,6]
+(3,2)
+*Archimedes.Sequence.Frequency> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+
+Archimedes/Sequence/Frequency.hs:20:18:
+    Could not deduce (a ~ (a, Int))
+    from the context (Eq a)
+      bound by the type signature for
+                 mostFrequent :: Eq a => [a] -> (a, Int)
+      at Archimedes/Sequence/Frequency.hs:19:17-40
+      `a' is a rigid type variable bound by
+          the type signature for mostFrequent :: Eq a => [a] -> (a, Int)
+          at Archimedes/Sequence/Frequency.hs:19:17
+    In the expression: fst . head . rev . qs $ freqList x
+    In an equation for `mostFrequent':
+        mostFrequent x = fst . head . rev . qs $ freqList x
+Failed, modules loaded: none.
+Prelude> :load "Archimedes/Sequence/Frequency.hs"
+[1 of 1] Compiling Archimedes.Sequence.Frequency ( Archimedes/Sequence/Frequency.hs, interpreted )
+Ok, modules loaded: Archimedes.Sequence.Frequency.
+*Archimedes.Sequence.Frequency> mostFrequent [1,2,3,3,4,5,6]
+3
+*Archimedes.Sequence.Frequency> 

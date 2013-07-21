@@ -1,0 +1,24 @@
+--Forefront is a Vanguard replacement. Modules are defined in resource blocks.
+-- resource foo {
+--  x = 3
+--  y = 2
+-- }
+-- Forefront can parse this into a data structure that looks something like this:
+-- [("foo",[("x",3),("y",2)])]
+
+--Input to Forefront, in the form of foo.y, will return 2.
+
+module Archimedes.Tasking.Forefront(
+    readRes
+  , getAllResources
+  , getInput) where
+
+import Archimedes.Sequence.Clarify -- For "Contains"
+import Archimedes.Sequence.Functional -- For "Filterbreak"
+
+--Helper Functions
+linesBetween :: [[a]] -> (a,a) -> [[a]]
+linesBetween [] _ = []
+linesBetween (x:xs) (a,b)
+  | x `contains` a = filterBreak (not ((flip contains) b)) xs
+  | otherwise = linesBetween xs (a,b)

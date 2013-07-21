@@ -22,5 +22,14 @@ cp -R ./Archimedes ~/Code/Haskell/Change/
 
 rm -rf ~/Code/Haskell/Vanguard/Archimedes # almost screwed everything
 cp -R ./Archimedes ~/Code/Haskell/Vanguard/
+
+rm -rf ~/Code/Haskell/HGame/Archimedes
+cp -R ./Archimedes ~/Code/Haskell/HGame/
+
+rm -rf ~/Code/Haskell/Cyme/Archimedes
+cp -R ./Archimedes ~/Code/Haskell/Cyme/
+
+rm -rf ~/CODE/Haskell/TAnal/Archimedes
+cp -R ./Archimedes ~/Code/Haskell/TAnal
 git add -u :/
 git add *
