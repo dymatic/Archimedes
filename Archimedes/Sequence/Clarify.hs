@@ -2,7 +2,8 @@ module Archimedes.Sequence.Clarify(
            contains
          , mostly
          , allEq
-         , find) where
+         , find
+         , positions) where
 
 import Archimedes.Sequence.Functional
 import Archimedes.Common
@@ -26,3 +27,6 @@ find xs b = if b `notElem` map fst xs
                       else find' xs
   where
     find' ((d, c):ys) = if d == b then c else find' ys
+
+positions :: (Eq a) => [a] -> a -> [Int]
+positions x y = let z = zip x [0..(length x)] in [d | (c,d) <- z, c == y]

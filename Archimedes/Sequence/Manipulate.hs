@@ -5,12 +5,12 @@ module Archimedes.Sequence.Manipulate(
      , after
      , before
      , between
-     , positions
      , removeLeading
      , afterList
      , beforeList
      , splitOn
-     , intersperse) where
+     , intersperse
+     , rev) where
 
 import Archimedes.Common
 import Archimedes.Sequence.Clarify
@@ -47,10 +47,6 @@ before a b = to a $ pos a b
 pos :: Eq a => [a] -> a -> Int
 pos xs b = length $ filterBreak (/= b) xs
 
-positions :: Eq a => [a] -> a -> [Int]
-positions a b = let lengths = zip a [0 .. dec $ length a] in
-  rm (map (\(c,d) -> if c == b then d else (- 1)) lengths) (- 1)
-
 removeLeading :: Eq a => [a] -> a -> [a]
 removeLeading x b = removeBreak (== b) x
 
@@ -78,3 +74,7 @@ intersperse = flip DL.intersperse
 
 between :: Eq a => [a] -> (a, a) -> [a]
 between x (a, b) = before (after x a) b
+
+rev :: [a] -> [a]
+rev [] = []
+rev (x:xs) = rev xs ++ [x]
